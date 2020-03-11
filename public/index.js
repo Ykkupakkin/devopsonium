@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-const myForm = document.getElementById("jokeForm");
-const url = "http://api.icndb.com/jokes/random";
+const myForm = document.getElementById('jokeForm');
+const url = 'http://api.icndb.com/jokes/random';
 
-myForm.addEventListener("submit", e => {
+myForm.addEventListener('submit', e => {
   e.preventDefault();
-  const jokeBox = document.getElementById("jokeBox");
+  const jokeBox = document.getElementById('jokeBox');
 
   fetch(url)
     .then(response => {
       if (response.status !== 200) {
         console.log(
-          "Looks like there was a problem. Status Code: " + response.status
+          'Looks like there was a problem. Status Code: ' + response.status
         );
         return;
       }
       // Examine the text in the response
       response.json().then(data => {
         console.log(data.value.joke);
-        let p = document.createElement("p");
+        const p = document.createElement('p');
         p.innerText = data.value.joke;
         jokeBox.appendChild(p);
       });
@@ -26,6 +26,6 @@ myForm.addEventListener("submit", e => {
     .catch(err => console.log(`TYPE OF ERROR: ${err}`));
 });
 
-export const addNum = (a,b) => {
+export const addNum = (a, b) => {
   return a + b;
 };

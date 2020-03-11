@@ -3,8 +3,7 @@
 // -- Base depedencies
 const express = require('express');
 const app = express();
-const PORT = 3000 || 8081
-
+const PORT = 3000 || 8081;
 
 // -- Express configuration
 app.use(express.urlencoded({ extended: true }));
@@ -16,8 +15,8 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(__dirname + '/index.html');
 });
 
-app.get("/hello", (req, res) => {
-  res.status(418).send("Hello World");
+app.get('/hello', (req, res) => {
+  res.status(418).send('Hello World');
 });
 
 // -- PORT Listen

@@ -25,6 +25,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "semistandard": "^14.2.0",
     "snazzy": "^8.0.0",
     "standard": "^14.3.1",
     "tape": "^4.13.2"
