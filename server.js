@@ -14,8 +14,16 @@ app.use(express.static('public'));
 // -- Path
 const indexPath = path.join('index.html');
 
+// -- Cors Middleware
+
 // -- Endpoint
 app.get('/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Authorization, Cache-Control, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
+  );
+
   res.status(200).sendFile(indexPath);
 });
 
