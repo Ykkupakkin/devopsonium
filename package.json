@@ -1,0 +1,27 @@
+{
+  "name": "devopsonium",
+  "version": "1.0.0",
+  "description": "DevOps working repo. Testing out new tools.",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ykkupakkin/devopsonium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ykkupakkin/devopsonium/issues"
+  },
+  "homepage": "https://github.com/Ykkupakkin/devopsonium#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
