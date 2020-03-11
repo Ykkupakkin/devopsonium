@@ -26,6 +26,6 @@ myForm.addEventListener('submit', e => {
     .catch(err => console.log(`TYPE OF ERROR: ${err}`));
 });
 
-export const addNum = (a, b) => {
-  return a + b;
-};
+// export const addNum = (a, b) => {
+//   return a + b;
+// };
