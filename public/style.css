@@ -1,11 +1,7 @@
 body {
   font-family: 'Indie Flower', cursive;
   font-size: 150%;
-<<<<<<< HEAD
-  background-color: magenta;
-=======
   background-color: tomato;
->>>>>>> 335908a13d7455846e8ceca33af6abfcf66f1051
   display: flex;
   justify-content: center;
 }
