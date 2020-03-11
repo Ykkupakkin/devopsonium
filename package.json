@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "semistandard",
+    "test": "semistandard | snazzy",
     "start": "node server.js"
   },
   "repository": {
