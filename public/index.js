@@ -7,7 +7,7 @@ myForm.addEventListener('submit', e => {
   e.preventDefault();
   const jokeBox = document.getElementById('jokeBox');
 
-  fetch(url)
+  document.fetch(url)
     .then(response => {
       if (response.status !== 200) {
         console.log(
