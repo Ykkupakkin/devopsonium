@@ -1,9 +1,20 @@
 pipeline {
-    agent { docker { image 'node:6.3' } }
+    agent any
     stages {
         stage('build') {
             steps {
                 sh 'npm --version'
+                
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('deploy') {
+            steps {
+
             }
         }
     }
@@ -16,6 +27,7 @@ pipeline {
         }
         failure {
             echo 'This will run only if failed'
+            sh 'npx semistandard --fix'
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
