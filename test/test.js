@@ -50,3 +50,20 @@ test('map with elements', function (t) {
     t.pass();
   });
 });
+
+test('more info', function (t) {
+  t.plan(2);
+
+  t.equal(1 + 2, 3, 'basic arithmetic still works');
+  t.ok(3 + 4 > 5, 'inequalities are as we might expect');
+});
+
+test('first', function (t) {
+  t.plan(1);
+  setTimeout(function () { t.ok(true); }, 200);
+});
+
+test('second', function (t) {
+  t.plan(1);
+  setTimeout(function () { t.ok(true); }, 100);
+});
