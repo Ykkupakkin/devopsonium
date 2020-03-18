@@ -1,20 +1,47 @@
 pipeline {
     agent any
+    environment {
+        dockerhubrepo ="ykkupakkin/jokester"
+        dockeruser="ykkupakkin"
+        dockerImage = ""
+        appname="examplePipeline"
+        envname = "Example-dev"
+        bucketname= "s3bucketlink"
+    }
     stages {
-        stage('build') {
+        stage('Install dependecies') {
             steps {
                 sh 'npm --version'
-                
-            }
-        }
-        stage('test') {
-            steps {
+                sh 'npm i'
+                sh 'echo "Anton suited up"'
                 sh 'npm test'
             }
         }
-        stage('deploy') {
+        stage('Deploy to Dockerhub') {
             steps {
-
+                script{
+                dockerImage = docker.build(dockerhubrepo + "BUILD_DATE_FORMATTED:latest")
+                }
+                script{
+                docker.withRegistry('', ${dockeruser})
+                dockerImage.push
+                }
+                sh 'echo "Dockerhub Deployed"'
+            }
+        }
+        stage('Deploy to ElasticBeanstalk') {
+            steps {
+                withAWS(credentials:"exampleid", region:"eu-west-3") {
+                    sh 'aws s3 cp ./dockerun-aws-json s3://${bucketname}/$BUILD_ID/dockerrun.aws.json'
+                    sh 'aws elasticbeanstalk create-application-version \
+                    --application-name "${appname}" \
+                    --version-label "$BUILD_ID" \
+                    --source-bundle S3Bucket="${bucketname}", S3Key="$BUILD_ID/dockerrun.aws.json" \
+                    --auto-create-application'
+                    sh 'aws elasticbeanstalk update-environment --application-name "${appname}" \
+                    --environment-name ${envname}'
+                }
+                sh 'echo "Elasticbeanstalk deployed'
             }
         }
     }
@@ -27,7 +54,6 @@ pipeline {
         }
         failure {
             echo 'This will run only if failed'
-            sh 'npx semistandard --fix'
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
