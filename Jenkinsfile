@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy to Dockerhub') {
             steps {
                 script{
-                image = docker.build("ykkupakkin/jokester")
+                def image = docker.build("ykkupakkin/jokester")
                 }
                 script{
                   docker.withRegistry('', dockeruser){
