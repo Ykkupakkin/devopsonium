@@ -21,10 +21,10 @@ pipeline {
         stage('Deploy to Dockerhub') {
             steps {
                 script{
-                def image = docker.build("ykkupakkin/jokester")
+                image = docker.build("ykkupakkin/jokester")
                 }
                 script{
-                  docker.withRegistry('', dockeruser){
+                  docker.withRegistry('', "dockeruser"){
                   image.push()
                   }
                 }
