@@ -25,7 +25,7 @@ pipeline {
                 }
                 script{
                   docker.withRegistry('', dockeruser){
-                  image.push
+                  image.push()
                   }
                 }
                 sh 'echo "Dockerhub Deployed"'
