@@ -24,7 +24,7 @@ pipeline {
                 image = docker.build("ykkupakkin/jokester")
                 }
                 script{
-                  docker.withRegistry('', "dockeruser"){
+                  docker.withRegistry('', "ykku-docker"){
                   image.push()
                   }
                 }
