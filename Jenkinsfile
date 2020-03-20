@@ -15,7 +15,7 @@ pipeline {
                 sh 'npm i'
                 sh 'echo "Anton suited up"'
                 sh 'npm test'
-                sh 'Anton sweeped the code'
+                sh 'echo "Anton sweeped the code"'
             }
         }
         stage('Deploy to Dockerhub') {
