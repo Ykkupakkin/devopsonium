@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy to Dockerhub') {
             steps {
                 script{
-                dockerImage = docker.build(dockerhubrepo + "BUILD_DATE_FORMATTED:latest")
+                dockerImage = docker.build(dockerhubrepo + ":latest")
                 }
                 script{
                 docker.withRegistry('', ${dockeruser})
