@@ -2,11 +2,11 @@ pipeline {
     agent any
     environment {
         dockerhubrepo ="ykkupakkin/jokester"
-        dockeruser="ykkupakkin"
+        dockeruser="ykku-docker"
         dockerImage = ""
-        appname="examplePipeline"
-        envname = "Example-dev"
-        bucketname= "s3bucketlink"
+        appname="jkstr"
+        envname = "Jkstr-env"
+        bucketname= "elasticbeanstalk-eu-west-3-124429370407"
     }
     stages {
         stage('Install dependecies') {
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Deploy to ElasticBeanstalk') {
             steps {
-                withAWS(credentials:"exampleid", region:"eu-west-3") {
+                withAWS(credentials:"ykku-aws", region:"eu-west-3") {
                     sh 'aws s3 cp ./dockerun-aws-json s3://${bucketname}/$BUILD_ID/dockerrun.aws.json'
                     sh 'aws elasticbeanstalk create-application-version \
                     --application-name "${appname}" \
