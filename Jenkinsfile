@@ -24,7 +24,7 @@ pipeline {
                 dockerImage = docker.build(dockerhubrepo + ":latest")
                 }
                 script{
-                docker.withRegistry('', ${dockeruser})
+                docker.withRegistry('', dockeruser)
                 dockerImage.push
                 }
                 sh 'echo "Dockerhub Deployed"'
