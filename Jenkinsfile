@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to ElasticBeanstalk') {
             steps {
                 withAWS(credentials:"ykku-aws", region:"eu-west-3") {
-                    sh 'aws s3 cp ./dockerrun-aws.json s3://${bucketname}/$BUILD_ID/dockerrun.aws.json'
+                    sh 'aws s3 cp dockerrun-aws.json s3://${bucketname}/$BUILD_ID/dockerrun.aws.json'
                     sh 'aws elasticbeanstalk create-application-version \
                     --application-name "${appname}" \
                     --version-label "$BUILD_ID" \
