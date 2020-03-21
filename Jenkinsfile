@@ -39,11 +39,9 @@ pipeline {
                     --application-name "${appname}" \
                     --version-label "$BUILD_ID" \
                     --source-bundle S3Bucket="${bucketname}",S3Key="./$BUILD_ID/dockerrun.aws.json" \
-                    --auto-create-application \
-                    --region eu-west-3'
-                    sh 'aws elasticbeanstalk update-environment --application-name "${appname}" \
-                    --environment-name "${envname}" \ 
-                    --region eu-west-3'
+                    --auto-create-application --region eu-west-3'
+                    sh 'aws elasticbeanstalk update-environment --region eu-west-3 --application-name "${appname}" \
+                    --environment-name "${envname}"'
                 }
                 sh 'echo "Elasticbeanstalk deployed'
             }
